@@ -1,0 +1,19 @@
+-r base.txt
+
+black==25.1.0
+isort==6.0.1
+
+ruff==0.12.8
+
+flake8==7.3.0
+dlint==0.16.0
+
+pre_commit==4.2.0
+
+django-debug-toolbar==6.0.0
+django-extensions==4.1
+
+factory_boy==3.3.3
+
+Sphinx==8.2.3
+sphinx-autobuild==2024.10.3
