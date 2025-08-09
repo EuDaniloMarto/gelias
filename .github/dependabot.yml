@@ -1,0 +1,11 @@
+# Para mais informações, veja https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  # Habilita o Dependabot para dependências do Python
+  - package-ecosystem: "pip"
+    # Procura por um arquivo `requirements.txt` na raiz do repositório
+    directory: "/"
+    # Verifica por atualizações a cada semana
+    schedule:
+      interval: "weekly"
