@@ -27,7 +27,7 @@ jobs:
         pip install -r requirements/dev.txt
     - name: Copy env
       run: |
-        cp exemple.env .env
+        cp example.env .env
     - name: Run Tests
       run: |
         python manage.py test
