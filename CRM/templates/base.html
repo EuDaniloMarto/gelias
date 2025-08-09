@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static i18n %}
+
+<html lang="{{ LANGUAGE_CODE }}">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <title>CRM Elias /
+            {% block title %}
+            {% endblock title %}
+        </title>
+        <link rel="stylesheet"
+              href="{% static 'bootstrap/dist/css/bootstrap.css' %}" />
+        <link rel="stylesheet"
+              href="{% static 'bootstrap-icons/font/bootstrap-icons.css' %}" />
+        <script defer src="{% static '@popperjs/core/dist/umd/popper.js' %}"></script>
+        <script defer src="{% static 'bootstrap/dist/js/bootstrap.js' %}"></script>
+    </head>
+    <body>
+        {% block navbar %}
+            <header class="mb-3 py-3 bg-light">
+                <div class="container-xxl">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <a href="{% url 'clientes:listar_clientes' %}"
+                           class="h3 link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                            CRM Elias
+                        </a>
+                    </div>
+                </div>
+            </header>
+        {% endblock navbar %}
+        <main class="container-xxl">
+            {% block content %}
+            {% endblock content %}
+        </main>
+    </body>
+</html>

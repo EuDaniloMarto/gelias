@@ -37,12 +37,6 @@ repos:
         # https://pre-commit.com/#top_level-default_language_version
         language_version: python3.13
 
-  - repo: https://github.com/Riverside-Healthcare/djLint
-    rev: v1.36.4
-    hooks:
-      - id: djlint-reformat-django
-      - id: djlint-django
-
 # sets up .pre-commit-ci.yaml to ensure pre-commit dependencies stay up to date
 ci:
   autoupdate_schedule: weekly

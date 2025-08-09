@@ -6,6 +6,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
+    path("clientes/", include("CRM.clientes.urls", namespace="clientes")),
     path("admin/", admin.site.urls),
 ]
 

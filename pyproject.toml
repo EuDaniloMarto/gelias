@@ -1,2 +1,11 @@
 [too.iosrt]
 profile = "black"
+
+[tool.djlint]
+blank_line_after_tag = "load,extends,include"
+close_void_tags = true
+format_css = true
+indent_size = 2
+
+[tool.djlint.css]
+indent_size = 2

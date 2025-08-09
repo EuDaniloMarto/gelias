@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "CRM",
+    "CRM.clientes",
 ]
 
 # Authentication
@@ -100,6 +101,7 @@ if DEBUG:
 # STATIC
 STATIC_ROOT = str(BASE_DIR / "staticfiles")
 STATIC_URL = "/static/"
+STATICFILES_DIRS = [str(BASE_DIR / "node_modules")]
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",

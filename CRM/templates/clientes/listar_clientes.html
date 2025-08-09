@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Listagem de todos os Clientes
+{% endblock title %}
+{% block content %}
+    <header class="d-flex align-center justify-content-between border-bottom mb-3 pb-2">
+        <h3>Listar Clientes</h3>
+        <a href="{% url 'clientes:criar_cliente' %}"
+           class="btn btn-outline-primary">
+            <i class="bi bi-plus"></i>
+        </a>
+    </header>
+    {% if clientes %}
+        <main class="card card-body">
+            <nav class="nav nav-underline mb-3">
+                <a href="{% url 'clientes:listar_clientes' %}"
+                   class="nav-link {% if not tipo_servico %}active{% endif %}"
+                   {% if not tipo_servico %}aria-current="page"{% endif %}>Todos</a>
+                <a href="{% url 'clientes:listar_clientes_por_tipo_servico' tipo_servico='alarme' %}"
+                   class="nav-link {% if tipo_servico == 'alarme' %}active{% endif %}"
+                   {% if tipo_servico == 'alarme' %}aria-current="page"{% endif %}>Alarme</a>
+                <a href="{% url 'clientes:listar_clientes_por_tipo_servico' tipo_servico='camera' %}"
+                   class="nav-link {% if tipo_servico == 'camera' %}active{% endif %}"
+                   {% if tipo_servico == 'camera' %}aria-current="page"{% endif %}>Câmera</a>
+            </nav>
+            {% for cliente in clientes %}
+                <section class="border-bottom mb-3">
+                    <p>
+                        <a class="{% if cliente.ativo %}link-dark{% else %}text-secondary{% endif %} link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                           href="{{ cliente.ver_cliente }}">{{ cliente.nome }}</a>
+                    </p>
+                    <p>
+                        {% if cliente.alarme %}<span class="badge text-bg-primary">Alarme</span>{% endif %}
+                        {% if cliente.camera %}<span class="badge text-bg-primary">Camera</span>{% endif %}
+                    </p>
+                </section>
+            {% endfor %}
+        </main>
+    {% else %}
+        <p>
+            Num cliente foi cadastrado ainda.
+            <a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+               href="{% url 'clientes:criar_cliente' %}">Cadastre o primeiro</a>
+        </p>
+    {% endif %}
+{% endblock content %}
