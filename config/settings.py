@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "CRM",
     "CRM.clientes",
+    "CRM.enderecos",
 ]
 
 # Authentication
