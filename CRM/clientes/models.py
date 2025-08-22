@@ -63,6 +63,9 @@ class Cliente(models.Model):
         return reverse("clientes:ver_cliente", kwargs={"slug": self.slug})
 
     def criar_cliente(self):
+        """
+        Retorna a URL para criar um novo cliente, com o parâmetro de referência do cliente atual.
+        """
         return f"{reverse('clientes:criar_cliente')}?from_cliente={self.slug}"
 
     def save(self, *args, **kwargs):

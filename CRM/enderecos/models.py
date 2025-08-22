@@ -79,8 +79,10 @@ class Endereco(models.Model):
 
         address = f"{self.logradouro}, {self.numero}"
 
+        cep_formatado = f"{self.cep[:5]}-{self.cep[5:]}" if self.cep else self.cep
+
         if self.complemento:
             address += f" - {self.complemento}"
-        address += f", {self.bairro}, {self.municipio} - {self.estado}, {self.cep}"
+        address += f", {self.bairro}, {self.municipio} - {self.estado}, {cep_formatado}"
 
         return address

@@ -47,15 +47,22 @@
         </header>
         <main>
             {% for endereco in cliente.listar_enderecos %}
-            <section class="mb-3">
-                <input type="text" name="endereco-{{ forloop.count }}" value="{{ endereco }}" maxlength="255" disabled="disabled" class="textinput form-control" required="" id="id_endereco-{{ forloop.counter }}" />
-            </section>
+                <section class="mb-3">
+                    <input type="text"
+                           name="endereco-{{ forloop.count }}"
+                           value="{{ endereco }}"
+                           maxlength="255"
+                           disabled="disabled"
+                           class="textinput form-control"
+                           required=""
+                           id="id_endereco-{{ forloop.counter }}" />
+                </section>
             {% empty %}
-            <p>
-                Nenhum endereço foi cadastrado ainda.
-                <a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                   href="{% url "clientes:enderecos:criar_endereco" cliente.slug %}">Cadastre o primeiro</a>
-            </p>
+                <p>
+                    Nenhum endereço foi cadastrado ainda.
+                    <a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                       href="{% url "clientes:enderecos:criar_endereco" cliente.slug %}">Cadastre o primeiro</a>
+                </p>
             {% endfor %}
         </main>
     </section>
