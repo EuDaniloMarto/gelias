@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {{ cliente.nome }}
+{% endblock title %}
+{% block content %}
+    <header class="d-flex align-center justify-content-between border-bottom mb-3 pb-2">
+        <h3>{{ cliente.nome }}</h3>
+        <nav>
+            <a href="{% url 'clientes:listar_clientes' %}"
+               class="btn btn-outline-secondary">
+                <i class="bi bi-chevron-double-left"></i>
+            </a>
+            <a href="{{ cliente.ver_cliente }}" class="btn btn-outline-secondary">
+                <i class="bi bi-chevron-left"></i>
+            </a>
+            <a href="{{ cliente.criar_cliente }}" class="btn btn-outline-secondary">
+                <i class="bi bi-plus"></i>
+            </a>
+        </nav>
+    </header>
+    <main class="card card-body mb-3">
+        <form action="{{ request.path }}" method="post">
+            {% csrf_token %}
+            <header class="d-flex justify-content-between align-items-center border-bottom mb-3 pb-2">
+                <h6 class="">Geral</h6>
+                <button class="btn btn-outline-secondary" type="submit">
+                    <i class="bi bi-pencil"></i>
+                    Atualizar
+                </button>
+            </header>
+            <main class="row">
+                <section class="col-6">
+                    {{ form.nome|as_crispy_field }}
+                    {{ form.tipo_cliente|as_crispy_field }}
+                    {{ form.alarme|as_crispy_field }}
+                    {{ form.camera|as_crispy_field }}
+                </section>
+                <section class="col-6">
+                    {{ form.observacoes|as_crispy_field }}
+                </section>
+            </main>
+            <footer class="col-12 border-top mt-3 pt-2">
+                {{ form.ativo|as_crispy_field }}
+            </footer>
+        </form>
+    </main>
+{% endblock content %}
+O campo "ativo" do mei model de cliente tem o valor padrão como True,

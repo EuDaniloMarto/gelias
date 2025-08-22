@@ -1,13 +1,15 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% load crispy_forms_tags %}
 
 {% block title %}
-    Criar Cliente
+    Criar Endereço para {{ cliente.nome }}
 {% endblock title %}
 {% block content %}
-    <header class="d-flex align-center justify-content-between border-bottom mb-3 pb-2">
-        <h3>Criar Cliente</h3>
+    <header class="d-flex align-center justify-content-between border-bottom border-primary mb-3 pb-2">
+        <h3>
+            Criar endereço para <span class="text-primary">{{ cliente.nome }}</span>
+        </h3>
         {% if cliente_anterior %}
             <div>
                 <a href="{% url 'clientes:listar_clientes' %}"
@@ -20,8 +22,7 @@
                 </a>
             </div>
         {% else %}
-            <a href="{% url 'clientes:listar_clientes' %}"
-               class="btn btn-outline-secondary">
+            <a href="{{ cliente.ver_cliente }}" class="btn btn-outline-secondary">
                 <i class="bi bi-chevron-left"></i>
             </a>
         {% endif %}
@@ -29,11 +30,11 @@
     <main>
         <form action="{{ request.path }}" method="post">
             {% csrf_token %}
-            <div class="card card-body mb-3">
+            <div class="card card-body border-primary mb-3">
                 {{ form|crispy }}
-                <button class="btn btn-outline-secondary w-25" type="submit">
+                <button class="btn btn-outline-primary w-25" type="submit">
                     <i class="bi bi-plus"></i>
-                    Criar cliente
+                    Criar endereco
                 </button>
             </div>
         </form>

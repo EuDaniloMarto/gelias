@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {{ cliente.nome }}
+{% endblock title %}
+{% block content %}
+    <header class="d-flex align-center justify-content-between border-bottom mb-3 pb-2">
+        <h3>{{ cliente.nome }}</h3>
+        <nav>
+            <a href="{% url 'clientes:listar_clientes' %}"
+               class="btn btn-outline-secondary">
+                <i class="bi bi-chevron-left"></i>
+            </a>
+            <a href="{{ cliente.criar_cliente }}" class="btn btn-outline-secondary">
+                <i class="bi bi-plus"></i>
+            </a>
+        </nav>
+    </header>
+    <section class="card card-body mb-3">
+        <header class="d-flex justify-content-between align-items-center border-bottom mb-3 pb-2">
+            <h6 class="">Geral</h6>
+            <a href="{{ cliente.atualizar_cliente }}"
+               class="btn btn-outline-secondary"><i class="bi bi-pencil"></i></a>
+        </header>
+        <main class="row">
+            <section class="col-6">
+                {{ dados.nome|as_crispy_field }}
+                {{ dados.tipo_cliente|as_crispy_field }}
+                {{ dados.alarme|as_crispy_field }}
+                {{ dados.camera|as_crispy_field }}
+            </section>
+            <section class="col-6">
+                {{ dados.observacoes|as_crispy_field }}
+            </section>
+        </main>
+        <footer class="col-12 border-top mt-3 pt-2">
+            {{ dados.ativo|as_crispy_field }}
+        </footer>
+    </section>
+    <h6>Endereços</h6>
+    <section class="card card-body mb-3">
+        {% for endereco in cliente.listar_enderecos %}
+            <form class="{% if not forloop.last %}border-bottom mb-3{% endif %}">
+                <div class="mb-3">
+                    <label class="form-label mb-2">Logradouro</label>
+                    <input type="text"
+                           placeholder="{{ endereco.logradouro }}"
+                           class="form-control"
+                           disabled />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label mb-2">Número</label>
+                    <input type="text"
+                           placeholder="{{ endereco.numero }}"
+                           class="form-control"
+                           disabled />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label mb-2">Complemento</label>
+                    <input type="text"
+                           placeholder="{{ endereco.complemento }}"
+                           class="form-control"
+                           disabled />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label mb-2">Bairro</label>
+                    <input type="text"
+                           placeholder="{{ endereco.bairro }}"
+                           class="form-control"
+                           disabled />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label mb-2">Município</label>
+                    <input type="text"
+                           placeholder="{{ endereco.municipio }}"
+                           class="form-control"
+                           disabled />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label mb-2">Estado</label>
+                    <input type="text"
+                           placeholder="{{ endereco.estado }}"
+                           class="form-control"
+                           disabled />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label mb-2">CEP</label>
+                    <input type="text"
+                           placeholder="{{ endereco.cep }}"
+                           class="form-control"
+                           disabled />
+                </div>
+            </form>
+        {% empty %}
+            <p>
+                Nenhum endereço foi cadastrado ainda.
+                <a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                   href="{% url "clientes:enderecos:criar_endereco" cliente.slug %}">Cadastre o primeiro</a>
+            </p>
+        {% endfor %}
+    </section>
+    <section class="card card-body mb-5">
+        <div class="mb-3">
+            <label for="nome" class="form-label mb-2">Observações</label>
+            <textarea class="form-control" name="" id="">{{ cliente.observacoes }}</textarea>
+        </div>
+    </section>
+{% endblock content %}
