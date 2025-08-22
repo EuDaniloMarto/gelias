@@ -1,17 +1,13 @@
-from django.views.generic import (
-    CreateView,
-    DetailView,
-    ListView,
-    TemplateView,
-    UpdateView,
-)
+from django.views import generic
 
-from .forms import AtualizarClienteForm, CriarClienteForm
+from . import forms
 from .models import Cliente
 
 
-class CriarClientes(CreateView):
-    form_class = CriarClienteForm
+class CriarClientes(generic.CreateView):
+    """View para criar clientes."""
+
+    form_class = forms.FormularioCriarCliente
     template_name = "clientes/criar_cliente.html"
 
     def get_success_url(self):
@@ -29,7 +25,9 @@ class CriarClientes(CreateView):
 criar_clientes = CriarClientes.as_view()
 
 
-class ListarClientes(ListView):
+class ListarClientes(generic.ListView):
+    """View para listar clientes."""
+
     template_name = "clientes/listar_clientes.html"
     queryset = Cliente.objects.all().only(
         "nome", "tipo_cliente", "alarme", "camera", "ativo"
@@ -50,26 +48,34 @@ class ListarClientes(ListView):
     def get_context_data(self, **kwargs):
         if "tipo_servico" not in kwargs:
             kwargs["tipo_servico"] = self.tipo_servico
-            # import ipdb
-            # ipdb.set_trace()
         return super().get_context_data(**kwargs)
 
 
 listar_clientes = ListarClientes.as_view()
 
 
-class VerCliente(DetailView):
+class VerCliente(generic.DetailView):
+    """View para ver detalhes do cliente."""
+
     template_name = "clientes/ver_cliente.html"
     model = Cliente
     context_object_name = "cliente"
+
+    def get_context_data(self, **kwargs):
+        self.extra_context = {
+            "dados": forms.FormularioVerCliente(instance=self.get_object()),
+        }
+        return super().get_context_data(**kwargs)
 
 
 ver_cliente = VerCliente.as_view()
 
 
-class AtualizarCliente(UpdateView):
+class AtualizarCliente(generic.UpdateView):
+    """View para atualizar cliente."""
+
     template_name = "clientes/atualizar_cliente.html"
-    form_class = AtualizarClienteForm
+    form_class = forms.FormularioAtualizarCliente
     model = Cliente
 
     def get_success_url(self):
@@ -77,10 +83,3 @@ class AtualizarCliente(UpdateView):
 
 
 atualizar_cliente = AtualizarCliente.as_view()
-
-
-class RemoverCliente(TemplateView):
-    template_name = "clientes/remover_cliente.html"
-
-
-remover_cliente = RemoverCliente.as_view()
