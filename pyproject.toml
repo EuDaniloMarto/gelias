@@ -1,8 +1,13 @@
-j[project]
+[project]
 name = "gelias"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
+license = { text = "MIT" }
+authors = [
+  { name = "Danilo Marto de Carvalho", email = "carvalho.dm@proton.me" },
+]
+
 requires-python = ">=3.12"
 dependencies = [
     "crispy-bootstrap5>=2025.6",
@@ -149,6 +154,7 @@ select = [
     "RUF",
 ]
 ignore = [
+  "COM812",
     "S101", # Use of assert detected https://docs.astral.sh/ruff/rules/assert/
     "RUF012", # Mutable class attributes should be annotated with `typing.ClassVar`
     "SIM102", # sometimes it's better to nest
@@ -159,19 +165,3 @@ ignore = [
 
 [tool.ruff.lint.isort]
 force-single-line = true
-
-[dependency-groups]
-dev = []
-
-[project]
-name = "{{ cookiecutter.project_slug }}"
-version = "{{ cookiecutter.version }}"
-description = "{{ cookiecutter.description }}"
-readme = "README.md"
-
-license = { text = "{{ cookiecutter.open_source_license }}" }
-authors = [
-  { name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.email }}" },
-]
-requires-python = "==3.13.*"
-dependencies = []
