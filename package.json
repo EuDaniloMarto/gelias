@@ -9,5 +9,17 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EuDaniloMarto/gelias.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EuDaniloMarto/gelias/issues"
+  },
+  "homepage": "https://github.com/EuDaniloMarto/gelias#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.1"
+  }
 }
