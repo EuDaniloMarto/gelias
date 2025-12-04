@@ -1,8 +1,6 @@
-from django.http import HttpRequest, HttpResponse  # noqa: I001
-from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView
 
 
-def index(request: HttpRequest) -> HttpResponse:
-    """Página Inicial"""
-
-    return render(request, "gelias/index.html")
+class Index(LoginRequiredMixin, TemplateView):
+    template_name = "gelias/index.html"

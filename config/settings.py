@@ -56,8 +56,9 @@ INSTALLED_APPS += [
 
 # Autenticação
 AUTH_USER_MODEL = "auth.User"
-# LOGIN_REDIRECT_URL =
-# LOGIN_URL =
+LOGIN_REDIRECT_URL = "gelias:index"
+LOGIN_URL = "login"
+LOGOUT_REDIRECT_URL = "login"
 
 # Senhas
 AUTH_PASSWORD_VALIDATORS = [

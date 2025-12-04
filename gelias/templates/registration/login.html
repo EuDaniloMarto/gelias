@@ -1,0 +1,20 @@
+{% extends "_base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Login{% endblock title %}
+
+{% block navmenu %}{% endblock navmenu %}
+
+{% block content %}
+<div class="container-xxl">
+  <div class="row mt-5 pt-5">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6 10 offset-sm-1 offset-md-2 offset-lg-3">
+      <p class="mb-5 pb-5 text-center fs-3 ">{% include "_logo.html" %}</p>
+      <form method="POST" action="{{ request.path }}" class="card card-body shadow-lg border-0">
+        {% csrf_token %} {{ form|crispy }}
+        <button type="submit" class="btn btn-outline-secondary">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}

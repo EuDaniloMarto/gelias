@@ -1,0 +1,30 @@
+<nav class="nav nav-underline flex-column flex-lg-row">
+  <a
+    href=""
+    class="text-capitalize {% if pagina == 'clientes' %}link-primary{% else %}link-body-emphasis{% endif %} link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover"
+    {% if pagina == 'clientes' %}aria-current="page"{% endif %}
+  >
+    clientes
+  </a>
+  <a
+    href=""
+    class="text-capitalize {% if pagina == 'manutenção' %}link-primary{% else %}link-body-emphasis{% endif %} link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover"
+    {% if pagina == 'manutenção' %}aria-current="page"{% endif %}
+  >
+    manutenção
+  </a>
+  <a
+    href=""
+    class="text-capitalize {% if pagina == 'orçamentos' %}link-primary{% else %}link-body-emphasis{% endif %} link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover"
+    {% if pagina == 'orçamentos' %}aria-current="page"{% endif %}
+  >
+    orçamentos
+  </a>
+  <a
+    href=""
+    class="text-capitalize {% if pagina == 'estoque' %}link-primary{% else %}link-body-emphasis{% endif %} link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover"
+    {% if pagina == 'estoque' %}aria-current="page"{% endif %}
+  >
+    estoque
+  </a>
+</nav>
