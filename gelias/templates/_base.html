@@ -59,6 +59,24 @@
       </main>
     </aside>
     {% endblock navmenu %}
+
+    {% block nav-breadcrumb %}
+    <div class="container-xxl d-none d-lg-block mb-3">
+      <div class="d-flex align-items-center justify-content-between">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            {% block breadcrumb %}
+            <li class="breadcrumb-item active" aria-current="page">
+              <i class="bi bi-house"></i>
+            </li>
+            {% endblock breadcrumb %}
+          </ol>
+        </nav>
+        <p>{{ request.user.username }}</p>
+      </div>
+    </div>
+    {% endblock nav-breadcrumb %}
+
     <main class="container-xxl">
       {% block content %}{% endblock content %}
     </main>

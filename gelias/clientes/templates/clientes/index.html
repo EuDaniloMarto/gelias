@@ -1,0 +1,95 @@
+{% extends "_base.html" %}
+
+{% block title %}
+Clientes
+{% endblock title %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url "gelias:index" %}">
+  <i class="bi bi-house"></i>
+</a></li>
+<li class="breadcrumb-item active" aria-current="page">Clientes</li>
+{% endblock breadcrumb %}
+
+{% block content %}
+<header class="mb-3">
+  <form action="{{ request.path }}" method="get" class="card card-body shadow-lg border-0 d-flex flex-row gap-2">
+    <input type="text" class="form-control">
+    <button class="btn btn-outline-secondary">
+      <i class="bi bi-search"></i>
+    </button>
+    <button class="btn btn-outline-secondary">
+      <i class="bi bi-filter"></i>
+    </button>
+  </form>
+</header>
+
+<main class="card card-body shadow-lg border-0">
+  <header class="row gap-3 mb-3">
+    <section class="d-md-none col-12">
+      <div class="dropdown">
+        <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          {{ servico|default:"Todos" }}
+        </button>
+        <ul class="dropdown-menu w-100">
+          <li><a class="dropdown-item" href="">Todos</a></li>
+          <li><a class="dropdown-item" href="">DVR</a></li>
+          <li><a class="dropdown-item" href="">Centrais de Alarmes</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="d-none d-md-block col-12 col-md-6">
+      <nav class="nav nav-underline">
+        <a
+          href=""
+          class="{% if not dvr and not central %}link-primary{% else %}link-body-emphasis{% endif %} link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover"
+        >
+          Todos
+        </a>
+        <a
+          href="{href=""
+          class="{% if dvr %}link-primary{% else %}link-body-emphasis{% endif %} link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover"
+        >
+          DVR
+        </a>
+        <a
+          href=""
+          class="{% if central %}link-primary{% else %}link-body-emphasis{% endif %} link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover"
+        >
+          Centrais
+           de Alarmes</a>
+      </nav>
+    </section>
+
+    <section class="col-12 col-md d-flex justify-content-center justify-content-md-end gap-2">
+      <a href="" class="btn btn-outline-secondary">
+        <i class="bi bi-plus"></i>
+      </a>
+      <button class="d-md-none btn btn-outline-secondary">
+        <i class="bi bi-filter"></i>
+      </button>
+    </section>
+  </header>
+
+  <main class"table-responsive">
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th class="text-nowrap text-center" scope="col">Tipo Pessoa</th>
+          <th class="text-nowrap text-center" scope="col">Tipo Cliente</th>
+          <th class="text-nowrap text-center" scope="col">DVR</th>
+          <th class="text-nowrap text-center" scope="col">Central de Alarme</th>
+        </tr>
+      </thead>
+      <tbody class="<th scope="col">Alarme</th>">
+        <tr>
+          <td colspan="6">Nenhum cliente encontrado</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</main>
+{% endblock content %}

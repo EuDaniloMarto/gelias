@@ -1,6 +1,6 @@
 <nav class="nav nav-underline flex-column flex-lg-row">
   <a
-    href=""
+    href="{% url "clientes:index" %}"
     class="text-capitalize {% if pagina == 'clientes' %}link-primary{% else %}link-body-emphasis{% endif %} link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover"
     {% if pagina == 'clientes' %}aria-current="page"{% endif %}
   >

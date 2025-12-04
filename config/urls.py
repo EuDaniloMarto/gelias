@@ -10,6 +10,7 @@ from django.urls import include, path
 
 urlpatterns = [
     path("", include("gelias.urls", namespace="gelias")),
+    path("clientes/", include("gelias.clientes.urls", namespace="clientes")),
     path("admin/", admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
 ]
